@@ -20,6 +20,13 @@ public class RestApiController {
         return new ResponseEntity<>(service.getAllAnimals(), HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
+    public Object getAnimalbyId(@RequestBody Animal animal, @PathVariable Integer id) {
+        service.updateAnimal(id, animal);
+        return new ResponseEntity<>(service.getAnimalById(id), HttpStatus.OK);
+    }
+
+
     @GetMapping("/intellect/{intellect}")
     public Object getAnimalByIntellect(@PathVariable Intellect intellect){
         return new ResponseEntity<>(service.getAllAnimalByIntellect(intellect), HttpStatus.OK);
