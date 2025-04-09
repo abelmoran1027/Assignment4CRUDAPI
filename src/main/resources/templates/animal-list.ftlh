@@ -21,7 +21,7 @@
       				<a href="index.html">
         				<button type="button" class="btn btn-dark mx-2">Homepage</button>
       				</a>
-      				<a href="details.html">
+      				<a href="animal-details.ftlh">
        	 				<button type="button" class="btn btn-dark mx-2">My Dog</button>
       				</a>
       				<a href="about.html">
