@@ -1,7 +1,6 @@
-package favoriteanimals.animals.CRUDAPI;
+package favoriteanimals.animals.animal;
 
 import favoriteanimals.animals.EnumType.Intellect;
-import favoriteanimals.animals.Objects.Animal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/animals")
-public class RestApiController {
+public class AnimalController {
 
     @Autowired
     private AnimalService service;

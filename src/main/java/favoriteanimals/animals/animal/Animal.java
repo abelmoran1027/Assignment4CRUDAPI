@@ -1,4 +1,4 @@
-package favoriteanimals.animals.Objects;
+package favoriteanimals.animals.animal;
 
 
 import favoriteanimals.animals.EnumType.Intellect;
