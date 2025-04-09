@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -16,24 +17,32 @@ public class AnimalController {
     private AnimalService service;
 
     @GetMapping                                                                                         // Get Mapping
-    public Object getAllAnimals() {
-        return new ResponseEntity<>(service.getAllAnimals(), HttpStatus.OK);
+    public Object getAllAnimals(Model model) {
+        //return new ResponseEntity<>(service.getAllAnimals(), HttpStatus.OK);
+        model.addAttribute("animalList", service.getAllAnimals());
+        model.addAttribute("title", "All Animals");
+        return "animal-list";
     }
 
     @GetMapping("/{id}")
-    public Object getAnimalbyId(@RequestBody Animal animal, @PathVariable Integer id) {
-        service.updateAnimal(id, animal);
-        return new ResponseEntity<>(service.getAnimalById(id), HttpStatus.OK);
+    public Object getAnimalbyId(Model model, @PathVariable Integer id) {
+        model.addAttribute("animalList", service.getAnimalById(id));
+        model.addAttribute("title", "Animal # " + id);
+        return "animal-details";
     }
 
 
     @GetMapping("/intellect/{intellect}")
-    public Object getAnimalByIntellect(@PathVariable Intellect intellect){
-        return new ResponseEntity<>(service.getAllAnimalByIntellect(intellect), HttpStatus.OK);
+    public Object getAnimalByIntellect(@PathVariable Intellect intellect, Model model){
+        model.addAttribute("animalList", service.getAllAnimalByIntellect(intellect));
+        model.addAttribute("title", "All animals with " + intellect.toString() + "Intellegence");
+        return "animal-details";
     }
 
     @GetMapping("/name")
-    public Object getAnimalByName(@RequestParam(name = "search", defaultValue = "") String search) {
+    public Object getAnimalByName(@RequestParam(name = "search", defaultValue = "") String search, Model model) {
+        model.addAttribute("animalList", service.getAnimalByName(search));
+        model.addAttribute("title", "Animals by Name" + search);
         return new ResponseEntity<>(service.getAnimalByName(search), HttpStatus.OK);
 
     }
