@@ -26,8 +26,8 @@ public class AnimalController {
 
     @GetMapping("/{id}")
     public Object getAnimalbyId(Model model, @PathVariable Integer id) {
-        model.addAttribute("animalList", service.getAnimalById(id));
-        model.addAttribute("title", "Animal # " + id);
+        model.addAttribute("animal", service.getAnimalById(id));
+        model.addAttribute("title", "Animal ID = " + id);
         return "animal-details";
     }
 
