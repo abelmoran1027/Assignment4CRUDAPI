@@ -10,37 +10,36 @@
 <!-- Header -->
 <div class="container-fluid text-center fs-1 bg-secondary text-dark">
   <p>Update an Animal</p>
+  <div class="container-fluid text-center fs-1 bg-secondary text-dark">
+    <!-- Buttons Container with Black Background -->
+    <div class="container-fluid">
+      <div class="d-flex justify-content-center py-3" style="margin-top: -40px;">
+        <a href="/animals"><button class="btn btn-dark mx-2">View All Animals</button></a>
+        <a href="/animals/createForm"><button class="btn btn-dark mx-2">Create an Animal</button></a>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- Update Form -->
+<!-- Form -->
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <h2 class="mb-4 text-center">Update Animal</h2>
-
-      <form method="POST" action="/api/animals/update">
-        <!-- Simulated PUT with hidden input (common approach) -->
-        <input type="hidden" name="_method" value="PUT">
-
+      <h2 class="mb-4 text-center">Add Animal</h2>
+      <form id="new-animal" action="/animals/update/${animal.id}" method="post">
         <div class="mb-3">
-          <label for="id" class="form-label">Animal ID</label>
-          <input type="number" class="form-control" id="id" name="id" required>
+          <label for="name" class="form-label">Name:</label>
+          <input type="text" class="form-control" id="name" name="name" required>
         </div>
 
         <div class="mb-3">
-          <label for="name" class="form-label">Animal Name</label>
-          <input type="text" class="form-control" id="name" name="name">
+          <label for="description" class="form-label">Description:</label>
+          <input type="text" class="form-control" id="description" name="description" required>
         </div>
 
         <div class="mb-3">
-          <label for="description" class="form-label">Description</label>
-          <textarea class="form-control" id="description" name="description" rows="3"></textarea>
-        </div>
-
-        <div class="mb-3">
-          <label for="intelligence" class="form-label">Intelligence</label>
-          <select class="form-select" id="intelligence" name="intelligence">
-            <option value="">Select Intelligence</option>
+          <label for="intellect" class="form-label">Intelligence:</label>
+          <select class="form-select" id="intellect" name="intellect" required>
             <option value="average">Average</option>
             <option value="smart">Smart</option>
             <option value="genius">Genius</option>
@@ -48,11 +47,8 @@
           </select>
         </div>
 
-        <div class="text-center">
-          <button type="submit" class="btn btn-warning">Update</button>
-        </div>
+        <button type="submit" class="btn btn-primary">Update Animal</button>
       </form>
-
     </div>
   </div>
 </div>

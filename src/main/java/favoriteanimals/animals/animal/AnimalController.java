@@ -47,21 +47,38 @@ public class AnimalController {
 
     }
 
+    @GetMapping("/createForm")
+    public String showCreateFrom(Model model) {
+        Animal animal = new Animal();
+        model.addAttribute("animal", animal);
+        model.addAttribute("title", "Create New Animal");
+        return "animal-create";
+    }
+
     @PostMapping("/new")                                                                                //Post Mapping
-    public Object addNewAnimal(@RequestBody Animal animal) {
+    public Object addNewAnimal(Animal animal) {
         service.addNewAnimal(animal);
-        return new ResponseEntity<>(service.getAllAnimals(), HttpStatus.CREATED);
+        return "redirect:/animals";
     }
 
-    @PutMapping("/update/{id}")                                                                         //Put Mapping
-    public Object updateAnimal(@RequestBody Animal animal, @PathVariable Integer id){
+    @GetMapping("/update/{id}")
+    public String showUpdateForm(@PathVariable int id, Model model){
+        model.addAttribute("animal", service.getAnimalById(id));
+        model.addAttribute("title", "Update Animal");
+        return "animal-update";
+    }
+    @PostMapping("/update/{id}")                                                                         //Put Mapping
+    public Object updateAnimal(Animal animal, @PathVariable Integer id){
         service.updateAnimal(id, animal);
-        return new ResponseEntity<>(service.getAllAnimals(), HttpStatus.CREATED);
+        return "redirect:/animals";
     }
 
-    @DeleteMapping("/delete/{id}")                                                                      //Delete Mapping
-    public Object deleteAnimal(@RequestBody Animal animal, @PathVariable Integer id){
-        service.deleteAnimal(id, animal);
-        return new ResponseEntity<>(service.getAllAnimals(), HttpStatus.CREATED);
+    @GetMapping("/delete/{id}")                                                                      //Delete Mapping
+    public Object deleteAnimal(Model model, @PathVariable Integer id){
+        service.deleteAnimal(id);
+        model.addAttribute("animalList", service.getAllAnimals());
+        model.addAttribute("title", "All Animals");
+        return "animal-list";
+        //return new ResponseEntity<>(service.getAllAnimals(), HttpStatus.CREATED);
     }
 }

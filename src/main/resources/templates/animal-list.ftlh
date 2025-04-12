@@ -18,10 +18,8 @@
   			<!-- Buttons Container with Black Background -->
   			<div class="container-fluid">
     			<div class="d-flex justify-content-center py-3" style="margin-top: -40px;">
-					<a href="animal-list.ftlh"><button class="btn btn-dark mx-2">Homepage</button></a>
-					<a href="animal-details.ftlh"><button class="btn btn-dark mx-2">View Animals</button></a>
-					<a href="animal-create.ftlh"><button class="btn btn-dark mx-2">Create an Animal</button></a>
-					<a href="animal-update.ftlh"><button class="btn btn-dark mx-2">Update an Animal</button></a>
+					<a href="/animals"><button class="btn btn-dark mx-2">View All Animals</button></a>
+					<a href="/animals/createForm"><button class="btn btn-dark mx-2">Create an Animal</button></a>
     			</div>
   			</div>
 		</div>
@@ -37,6 +35,14 @@
 				<div class="col-md-4 text-md-end mt-3 mt-md-0">
 					<a href="/animals/${animal.id}">
 						<button class="btn btn-outline-dark">More Info</button>
+					</a>
+
+					<a href="/animals/update/${animal.id}">
+						<button class="btn btn-outline-dark">Edit</button>
+					</a>
+
+					<a href="/animals/delete/${animal.id}">
+						<button class="btn btn-danger mx-2">Delete</button>
 					</a>
 				</div>
 			</div>

@@ -41,7 +41,7 @@ public class AnimalService {
         animalRepository.save(existing);
     }
 
-    public void deleteAnimal(int id, Animal animal) {
+    public void deleteAnimal(int id) {
         animalRepository.deleteById(id);
     }
 }
