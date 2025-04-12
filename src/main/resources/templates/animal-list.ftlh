@@ -24,6 +24,11 @@
   			</div>
 		</div>
 
+		<form action="/animals/name" method="get" class="d-flex justify-content-center my-4">
+			<input type="text" name="search" class="form-control w-50 me-2" placeholder="Search By Name 🔍" required>
+			<button type="submit" class="btn btn-primary">Search</button>
+		</form>
+
 		<br>
 		<div class="container my-5">
 			<#list animalList as animal>

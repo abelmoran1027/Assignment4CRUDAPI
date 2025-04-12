@@ -43,7 +43,8 @@ public class AnimalController {
     public Object getAnimalByName(@RequestParam(name = "search", defaultValue = "") String search, Model model) {
         model.addAttribute("animalList", service.getAnimalByName(search));
         model.addAttribute("title", "Animals by Name" + search);
-        return new ResponseEntity<>(service.getAnimalByName(search), HttpStatus.OK);
+        //return new ResponseEntity<>(service.getAnimalByName(search), HttpStatus.OK);
+        return "animal-list";
 
     }
 
